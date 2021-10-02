@@ -1,25 +1,27 @@
-import React from "react";
-import Header from "./Header";
-import TodosList from "./TodosList";
-import InputTodo from "./InputTodo";
-import { v4 as uuidv4 } from "uuid";
+/* eslint-disable no-unused-vars */
+
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import Header from './Header';
+import TodosList from './TodosList';
+import InputTodo from './InputTodo';
 
 class TodoContainer extends React.Component {
   state = {
     todos: [
       {
         id: uuidv4(),
-        title: "Setup development environment",
+        title: 'Setup development environment',
         completed: true,
       },
       {
         id: uuidv4(),
-        title: "Develop website and add content",
+        title: 'Develop website and add content',
         completed: false,
       },
       {
         id: uuidv4(),
-        title: "Deploy to live server",
+        title: 'Deploy to live server',
         completed: false,
       },
     ],
@@ -42,9 +44,7 @@ class TodoContainer extends React.Component {
   delTodo = (id) => {
     this.setState({
       todos: [
-        ...this.state.todos.filter((todo) => {
-          return todo.id !== id;
-        }),
+        ...this.state.todos.filter((todo) => todo.id !== id),
       ],
     });
   };
@@ -52,7 +52,7 @@ class TodoContainer extends React.Component {
   addTodoItem = (title) => {
     const newTodo = {
       id: uuidv4(),
-      title: title,
+      title,
       completed: false,
     };
     this.setState({
@@ -62,13 +62,13 @@ class TodoContainer extends React.Component {
 
   setUpdate = (updatedTitle, id) => {
     this.setState({
-      todos: this.state.todos.map(todo => {
+      todos: this.state.todos.map((todo) => {
         if (todo.id === id) {
-          todo.title = updatedTitle
+          todo.title = updatedTitle;
         }
-        return todo
+        return todo;
       }),
-    })
+    });
   }
 
   render() {
